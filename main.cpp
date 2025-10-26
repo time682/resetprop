@@ -15,7 +15,7 @@ static int setprop(const char *name, const char *value, const bool trigger) {
 			ret = __system_property_update(pi, value, strlen(value));
 		}
 	} else {
-		printf("resetprop: New prop [%s]\n", name);
+		//printf("resetprop: New prop [%s]\n", name);
 		if (trigger) {
 			ret = __system_property_set(name, value);
 		} else {
@@ -23,8 +23,8 @@ static int setprop(const char *name, const char *value, const bool trigger) {
 		}
 	}
 
-	printf("resetprop: setprop [%s]: [%s] by %s\n", name, value,
-		trigger ? "property_service" : "modifing prop data structure");
+	//printf("resetprop: setprop [%s]: [%s] by %s\n", name, value,
+	//	trigger ? "property_service" : "modifing prop data structure");
 
 	if (ret)
 		printf("resetprop: setprop error\n");
