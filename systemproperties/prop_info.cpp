@@ -29,6 +29,8 @@
 #include "system_properties/prop_info.h"
 
 #include <string.h>
+#include <cstdint>
+#include <atomic>
 
 constexpr static const char kLongLegacyError[] =
     "Must use __system_property_read_callback() to read";
@@ -48,7 +50,9 @@ prop_info::prop_info(const char* name, uint32_t namelen, uint32_t long_offset) {
   this->name[namelen] = '\0';
 
   auto error_value_len = sizeof(kLongLegacyError) - 1;
-  atomic_init(&this->serial, error_value_len << 24 | kLongFlag);
+  //atomic_init(&this->serial, error_value_len << 24 | kLongFlag);
+  this->serial.store(static_cast<std::uint32_t>((error_value_len << 24) | kLongFlag),
+                   std::memory_order_relaxed);
   memcpy(this->long_property.error_message, kLongLegacyError, sizeof(kLongLegacyError));
 
   this->long_property.offset = long_offset;

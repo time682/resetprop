@@ -40,6 +40,8 @@
 #include <new>
 
 #include <async_safe/log.h>
+#include <atomic>
+using namespace std;
 
 constexpr size_t PA_SIZE = 128 * 1024;
 constexpr uint32_t PROP_AREA_MAGIC = 0x504f5250;
@@ -383,7 +385,9 @@ bool prop_area::del(const char *name) {
   prop_bt* node = find_prop_bt(root_node(), name, false);
   if (!node)
     return false;
-  atomic_store_explicit(&node->prop, 0, memory_order_release);
+  //atomic_store_explicit(&node->prop, 0, memory_order_release);
+  std::atomic_store_explicit(&(node->prop), 0u, std::memory_order_release);
+
   return true;
 }
 
