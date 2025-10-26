@@ -38,5 +38,5 @@ int main(int argc, char** argv) {
 		return 1;
 	}
 
-	setprop(argv[1], argv[2], false);
+	setprop(argv[1], argv[2], true);
 }

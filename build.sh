@@ -12,7 +12,7 @@ aarch64-linux-android${API}-clang++ \
     -fvisibility=hidden -fno-rtti -fno-exceptions \
     -Wl,--gc-sections -s \
     -static-libgcc \
-    -o resetprop && ls -al resetprop
+    -o resetprop-arm64 && ls -al resetprop-arm64
 
 # 修正动态库名称（保留）
 #sed -i -e 's@libc++_shared.so@libc++.so\x00\x00\x00\x00\x00\x00\x00@g' resetprop
