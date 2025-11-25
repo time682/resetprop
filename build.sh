@@ -13,7 +13,7 @@ aarch64-linux-android${API}-clang++ \
     -fvisibility=hidden -fno-rtti -fno-exceptions \
     -Wl,--gc-sections -s \
     -static-libgcc \
-    -lc -lm -ldl -lz \
+    -lc -lm -ldl \
     -stdlib=libc++ \
     -static-libstdc++ \
     -o resetprop-arm64
